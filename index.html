@@ -1,1 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flipkart Big Billion Deal</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+        }
 
+        .container {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .banner {
+            background-image: url(Picsart_24-10-06_13-46-40-833.png); /* Placeholder for banner image */
+            background-size: cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 3em;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px #000;
+        }
+
+        .countdown {
+            font-size: 2.5em;
+            color: #ff9f00;
+            margin: 20px 0;
+        }
+
+        .claim-btn {
+            background-color: #ff9f00;
+            color: white;
+            padding: 20px 30px;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .claim-btn:hover {
+            background-color: #e68a00;
+        }
+
+        .popup {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .popup h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .popup-content {
+            background-color: #ff9f00;
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .category {
+            background-color: #0073e6;
+            color: white;
+            padding: 15px 25px;
+            margin: 10px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .category:hover {
+            background-color: #005bb5;
+        }
+
+        /* Fireworks CSS Animation */
+        .firework {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: red;
+            position: absolute;
+            animation: burst 1.5s ease-out infinite;
+        }
+
+        @keyframes burst {
+            0% {transform: scale(0);}
+            100% {transform: scale(10); opacity: 0;}
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Audio player -->
+    <audio autoplay>
+        <source src="calm_down.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <div class="container">
+        <div class="banner">
+            Final Countdown to Claim Extra Discount on Your Shopping!
+        </div>
+        <p class="countdown">Don't Miss This Opportunity. Shop Now on Flipkart!</p>
+        <button class="claim-btn" onclick="showPopup()">Claim Discount</button>
+    </div>
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h1>Congratulations! You Got 50-90% Discount on Every Product!</h1>
+            <div class="categories">
+                <a href="https://fktr.in/ymWZrLe" class="category">Women's Wear</a>
+                <a href="https://fktr.in/gNdE1sG" class="category">Girl's Wear</a>
+                <a href="https://fktr.in/JuF9PPj" class="category">Men's Wear</a>
+                <a href="https://fktr.in/d0emEsu" class="category">Electronic</a>
+                <a href="https://fktr.in/a6Ip8AT" class="category">Beauty</a>
+                <a href="https://fktr.in/8Emmr9R" class="category">Women's Shoes</a>
+                <a href="https://fktr.in/vfkvbwo" class="category">Men's Shoes</a>
+                <a href="https://fktr.in/R7FZaSH" class="category">TV</a>
+                <a href="https://fktr.in/chcev0r" class="category">Laptops</a>
+            </div>
+        </div>
+        <!-- Fireworks effect -->
+        <div class="firework" style="top: 10%; left: 40%;"></div>
+        <div class="firework" style="top: 50%; left: 60%;"></div>
+        <div class="firework" style="top: 80%; left: 30%;"></div>
+    </div>
+
+    <script>
+        function showPopup() {
+            document.getElementById('popup').style.display = 'flex';
+        }
+    </script>
+</body>
+  </html>
