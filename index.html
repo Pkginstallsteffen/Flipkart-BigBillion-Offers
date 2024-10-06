@@ -19,9 +19,9 @@
         }
 
         .banner {
-            background-image: url('Screenshot_20241006-142612~2.png'); /* Placeholder for banner image */
+            background-image: url(Screenshot_20241006-142612~2.png); /* Placeholder for banner image */
             background-size: cover;
-            height: 500px;
+            height: 500px; /* Set height to 500 pixels */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -76,26 +76,35 @@
             border-radius: 10px;
         }
 
-        .categories {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 20px;
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin: 20px 0;
         }
 
-        .category {
-            background-color: #0073e6;
-            color: white;
-            padding: 15px 25px;
-            margin: 10px;
-            border-radius: 5px;
-            font-size: 1.2em;
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
             text-decoration: none;
-            transition: background-color 0.3s ease;
+            display: block;
         }
 
-        .category:hover {
-            background-color: #005bb5;
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
 
         /* Fireworks CSS Animation */
@@ -116,6 +125,12 @@
 </head>
 <body>
 
+    <!-- Audio player -->
+    <audio autoplay>
+        <source src="calm_down.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+
     <div class="container">
         <div class="banner">
             Final Countdown to Claim Extra Discount on Your Shopping!
@@ -127,16 +142,19 @@
     <div class="popup" id="popup">
         <div class="popup-content">
             <h1>Congratulations! You Got 50-90% Discount on Every Product!</h1>
-            <div class="categories">
-                <a href="https://fktr.in/ymWZrLe" class="category">Women's Wear</a>
-                <a href="https://fktr.in/gNdE1sG" class="category">Girl's Wear</a>
-                <a href="https://fktr.in/JuF9PPj" class="category">Men's Wear</a>
-                <a href="https://fktr.in/d0emEsu" class="category">Electronic</a>
-                <a href="https://fktr.in/a6Ip8AT" class="category">Beauty</a>
-                <a href="https://fktr.in/8Emmr9R" class="category">Women's Shoes</a>
-                <a href="https://fktr.in/vfkvbwo" class="category">Men's Shoes</a>
-                <a href="https://fktr.in/R7FZaSH" class="category">TV</a>
-                <a href="https://fktr.in/chcev0r" class="category">Laptops</a>
+            <div class="dropdown">
+                <button class="claim-btn">Select Category</button>
+                <div class="dropdown-content">
+                    <a href="https://fktr.in/ymWZrLe">Women's Wear</a>
+                    <a href="https://fktr.in/gNdE1sG">Girl's Wear</a>
+                    <a href="https://fktr.in/JuF9PPj">Men's Wear</a>
+                    <a href="https://fktr.in/d0emEsu">Electronics</a>
+                    <a href="https://fktr.in/a6Ip8AT">Beauty</a>
+                    <a href="https://fktr.in/8Emmr9R">Women's Shoes</a>
+                    <a href="https://fktr.in/vfkvbwo">Men's Shoes</a>
+                    <a href="https://fktr.in/R7FZaSH">TV</a>
+                    <a href="https://fktr.in/chcev0r">Laptops</a>
+                </div>
             </div>
         </div>
         <!-- Fireworks effect -->
@@ -145,23 +163,10 @@
         <div class="firework" style="top: 80%; left: 30%;"></div>
     </div>
 
-    <!-- Background Music -->
-    <audio id="bg-music" autoplay loop>
-        <source src="calm_down.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
     <script>
-        // Show the popup
         function showPopup() {
             document.getElementById('popup').style.display = 'flex';
         }
-
-        // Auto-play music
-        window.onload = function() {
-            var audio = document.getElementById('bg-music');
-            audio.play();
-        }
     </script>
 </body>
-</html>                
+</html>
