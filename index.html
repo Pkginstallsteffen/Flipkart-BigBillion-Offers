@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Flipkart Big Billion Deal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body, html {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: #f1f1f1;
         }
 
@@ -19,7 +20,7 @@
         }
 
         .banner {
-            background-image: url(Screenshot_20241006-142612~2.png); /* Placeholder for banner image */
+            background-image: url(Picsart_24-10-06_14-06-29-889.jpg); /* Placeholder for banner image */
             background-size: cover;
             height: 500px; /* Set height to 500 pixels */
             display: flex;
@@ -45,6 +46,8 @@
             font-size: 1.5em;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .claim-btn:hover {
@@ -63,6 +66,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            z-index: 999;
         }
 
         .popup h1 {
@@ -74,6 +78,7 @@
             background-color: #ff9f00;
             padding: 40px;
             border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         /* Dropdown Styles */
@@ -87,24 +92,87 @@
             display: none;
             position: absolute;
             background-color: #fff;
-            min-width: 200px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            min-width: 300px;
+            border-radius: 5px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             z-index: 1;
+            animation: slideIn 0.3s ease-out forwards;
         }
 
         .dropdown-content a {
             color: black;
             padding: 12px 16px;
             text-decoration: none;
-            display: block;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.2s ease;
         }
 
         .dropdown-content a:hover {
             background-color: #f1f1f1;
         }
 
-        .dropdown:hover .dropdown-content {
-            display: block;
+        .dropdown-btn {
+            cursor: pointer;
+            padding: 12px 20px;
+            border: none;
+            background-color: #ff9f00;
+            color: white;
+            font-size: 1.5em;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-btn:hover {
+            background-color: #e68a00;
+        }
+
+        .search-input {
+            padding: 10px;
+            width: 90%;
+            margin: 10px auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: #ff9f00;
+            box-shadow: 0 0 5px rgba(255, 159, 0, 0.5);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Card styles for categories */
+        .category-card {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            margin: 5px 0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
         }
 
         /* Fireworks CSS Animation */
@@ -143,30 +211,99 @@
         <div class="popup-content">
             <h1>Congratulations! You Got 50-90% Discount on Every Product!</h1>
             <div class="dropdown">
-                <button class="claim-btn">Select Category</button>
-                <div class="dropdown-content">
-                    <a href="https://fktr.in/ymWZrLe">Women's Wear</a>
-                    <a href="https://fktr.in/gNdE1sG">Girl's Wear</a>
-                    <a href="https://fktr.in/JuF9PPj">Men's Wear</a>
-                    <a href="https://fktr.in/d0emEsu">Electronics</a>
-                    <a href="https://fktr.in/a6Ip8AT">Beauty</a>
-                    <a href="https://fktr.in/8Emmr9R">Women's Shoes</a>
-                    <a href="https://fktr.in/vfkvbwo">Men's Shoes</a>
-                    <a href="https://fktr.in/R7FZaSH">TV</a>
-                    <a href="https://fktr.in/chcev0r">Laptops</a>
+                <button class="dropdown-btn" onclick="toggleDropdown()">Select Category</button>
+                <div class="dropdown-content" id="dropdown-content">
+                    <input type="text" class="search-input" placeholder="Search categories..." onkeyup="filterCategories()">
+                    <div class="category-card">
+                        <img src="icons/Vector saree with women figure clothing logo design Generative Ai _ Premium AI-generated vector.jpeg" alt="Women's Wear" class="category-icon"> <!-- Placeholder for women's wear icon -->
+                        <a href="https://fktr.in/ymWZrLe">Women's Wear</a>
+                    </div>
+                    <div class="category-card">
+                        <img src="icons/344defee-ead8-4ad1-9891-741a45d6ab41.jpeg" alt="Girl's Wear" class="category-icon"> <!-- Placeholder for girl's wear icon -->
+                        <a href="https://fktr.in/gNdE1sG">Girl's Wear</a>
+                    </div>
+                    <div class="category-card">
+                        <img src="icons/156c6ede-08b8-4955-8c39-95ccf4026e02.jpeg" alt="Men's Wear" class="category-icon"> <!-- Placeholder for men's wear icon -->
+                        <a href="https://fktr.in/JuF9PPj">Men's Wear</a>
+                    </div>
+                    <div class="category-card">
+                        <img src="icons/5380d508-c173-455a-a184-b2fbe7f6d226.jpeg" alt="Electronics" class="category-icon"> <!-- Placeholder for electronics icon -->
+                        <a href="https://fktr.in/d0emEsu">Electronics</a>
+                    </div>
+                    <div class="category-card">
+                        <img src="icons/315220cb-8fa3-4e68-b72d-7869f705de5a.jpeg" alt="Beauty" class="category-icon"> <!-- Placeholder for beauty icon -->
+                        <a href="https://fktr.in/a6Ip8AT">Beauty</a>
+                    </div>
+                    <div class="category-card">
+                        <img src="icons/595772fa-f361-4682-9375-734f50a85f78.jpeg" alt="Women's Shoes" class="category-icon"> <!-- Placeholder for women's shoes icon -->
+                        <a href="https://fktr.in/8Emmr9R">Women's Shoes</a>
+                    </div>
+                    <div class="category-card">
+                        <img src="icons/8ed8a90d-65dc-41a5-b7fb-5ee87865035e.jpeg" alt="Men's Shoes" class="category-icon"> <!-- Placeholder for men's shoes icon -->
+                        <a href="https://fktr.in/vfkvbwo">Men's Shoes</a>
+                    </div>
+                    <div class="category-card">
+                        <img src="icons/7720ceec-6d4c-4c41-b40b-5828bf83356c.jpeg" alt="TV" class="category-icon"> <!--
+    <img src="icons/tv.png" alt="TV" class="category-icon"> <!-- Placeholder for TV icon -->
+                        <a href="https://fktr.in/6wx7RYC">TV</a>
+                    </div>
+                    <div class="category-card">
+                        <img src="icons/ee4c947e-1e24-43bd-8bbb-48d5c4d5d4b8.jpeg" alt="Laptop" class="category-icon"> <!-- Placeholder for laptop icon -->
+                        <a href="https://fktr.in/sKi1k1Q">Laptop</a>
+                    </div>
+                    <div class="category-card">
+                        <img src="icons/1629f7c7-a50b-4f93-b399-dbab0fe661a6.jpeg" alt="Mobile" class="category-icon"> <!-- Placeholder for mobile icon -->
+                        <a href="https://fktr.in/hHp5CLu">Mobile</a>
+                    </div>
+                    <div class="category-card">
+                        <img src="icons/ee4c947e-1e24-43bd-8bbb-48d5c4d5d4b8.jpeg" alt="Home Appliances" class="category-icon"> <!-- Placeholder for home appliances icon -->
+                        <a href="https://fktr.in/mEkqEyo">Home Appliances</a>
+                    </div>
                 </div>
             </div>
+            <button class="claim-btn" onclick="closePopup()">Close</button>
         </div>
-        <!-- Fireworks effect -->
-        <div class="firework" style="top: 10%; left: 40%;"></div>
-        <div class="firework" style="top: 50%; left: 60%;"></div>
-        <div class="firework" style="top: 80%; left: 30%;"></div>
     </div>
 
     <script>
         function showPopup() {
             document.getElementById('popup').style.display = 'flex';
         }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        function toggleDropdown() {
+            const dropdownContent = document.getElementById('dropdown-content');
+            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function filterCategories() {
+            const input = document.querySelector('.search-input').value.toLowerCase();
+            const cards = document.querySelectorAll('.category-card');
+
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                card.style.display = text.includes(input) ? 'flex' : 'none';
+            });
+        }
+
+        // Close the dropdown if clicked outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropdown-btn')) {
+                const dropdownContent = document.getElementById('dropdown-content');
+                dropdownContent.style.display = 'none';
+            }
+        };
     </script>
+
+    <!-- Firework Animation -->
+    <div class="firework" style="top: 20%; left: 40%; animation-delay: 0s;"></div>
+    <div class="firework" style="top: 30%; left: 50%; animation-delay: 0.3s;"></div>
+    <div class="firework" style="top: 50%; left: 30%; animation-delay: 0.6s;"></div>
+    <div class="firework" style="top: 60%; left: 70%; animation-delay: 0.9s;"></div>
+    <div class="firework" style="top: 80%; left: 20%; animation-delay: 1.2s;"></div>
+
 </body>
 </html>
